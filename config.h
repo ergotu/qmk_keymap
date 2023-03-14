@@ -20,10 +20,10 @@
 #define PERMISSIVE_HOLD_PER_KEY
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
-// #ifdef COMBO_ENABLE
-// #	define COMBO_TERM 30
-// #	define COMBO_ONLY_FROM_LAYER 0
-// #endif
+#ifdef COMBO_ENABLE
+#	define COMBO_TERM 30
+#	define COMBO_ONLY_FROM_LAYER 0
+#endif
 
 // #ifdef SPLIT_KEYBOARD
 // #	define SPLIT_WATCHDOG_ENABLE
@@ -44,17 +44,17 @@
 // #	endif
 // #endif
 
-// #ifdef MOUSEKEY_ENABLE
-// #	define MOUSEKEY_DELAY 0			// Delay between pressing a key and cursor movement
-// #	define MOUSEKEY_INTERVAL 15		// Time between cursor movements in milliseconds
-// #	define MOUSEKEY_MOVE_DELTA 10	// Step size for acceleration
-// #	define MOUSEKEY_MAX_SPEED 9
-// #	define MOUSEKEY_TIME_TO_MAX 90
-// #	define MOUSEKEY_WHEEL_DELAY 16
-// #	define MOUSEKEY_WHEEL_INTERVAL 30
-// #	define MOUSEKEY_WHEEL_MAX_SPEED 10
-// #	define MOUSEKEY_WHEEL_TIME_TO_MAX 95
-// #endif
+#ifdef MOUSEKEY_ENABLE
+#	define MOUSEKEY_DELAY 0			// Delay between pressing a key and cursor movement
+#	define MOUSEKEY_INTERVAL 15		// Time between cursor movements in milliseconds
+#	define MOUSEKEY_MOVE_DELTA 10	// Step size for acceleration
+#	define MOUSEKEY_MAX_SPEED 9
+#	define MOUSEKEY_TIME_TO_MAX 90
+#	define MOUSEKEY_WHEEL_DELAY 16
+#	define MOUSEKEY_WHEEL_INTERVAL 30
+#	define MOUSEKEY_WHEEL_MAX_SPEED 10
+#	define MOUSEKEY_WHEEL_TIME_TO_MAX 95
+#endif
 
 // #ifdef RGB_MATRIX_ENABLE
 // #	include "rgb/rgb-disable.h"
