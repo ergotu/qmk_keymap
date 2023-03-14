@@ -9,8 +9,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: lily58
-        conv: promicro_rp2040
+        keyboard: [lily58]
+        conv: [promicro_rp2040]
         split: ''
         # keyboard: [cradio]
         # conv: [kb2040, elite_pi]
