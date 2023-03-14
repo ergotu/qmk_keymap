@@ -20,73 +20,73 @@
 #define PERMISSIVE_HOLD_PER_KEY
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
-#ifdef COMBO_ENABLE
-#	define COMBO_TERM 30
-#	define COMBO_ONLY_FROM_LAYER 0
-#endif
+// #ifdef COMBO_ENABLE
+// #	define COMBO_TERM 30
+// #	define COMBO_ONLY_FROM_LAYER 0
+// #endif
 
-#ifdef SPLIT_KEYBOARD
-#	define SPLIT_WATCHDOG_ENABLE
-#	ifdef CONVERT_TO_ELITE_PI
-#		define USB_VBUS_PIN 19U
-#	else
-#		define SPLIT_USB_DETECT
-#	endif
-#	ifdef OLED_ENABLE
-#		define SPLIT_OLED_ENABLE
-#		define SPLIT_MODS_ENABLE
-#		define SPLIT_LED_STATE_ENABLE
-#		define SPLIT_LAYER_STATE_ENABLE
-#	elif RGB_MATRIX_ENABLE
-#		define SPLIT_MODS_ENABLE
-#		define SPLIT_LED_STATE_ENABLE
-#		define SPLIT_LAYER_STATE_ENABLE
-#	endif
-#endif
+// #ifdef SPLIT_KEYBOARD
+// #	define SPLIT_WATCHDOG_ENABLE
+// #	ifdef CONVERT_TO_ELITE_PI
+// #		define USB_VBUS_PIN 19U
+// #	else
+// #		define SPLIT_USB_DETECT
+// #	endif
+// #	ifdef OLED_ENABLE
+// #		define SPLIT_OLED_ENABLE
+// #		define SPLIT_MODS_ENABLE
+// #		define SPLIT_LED_STATE_ENABLE
+// #		define SPLIT_LAYER_STATE_ENABLE
+// #	elif RGB_MATRIX_ENABLE
+// #		define SPLIT_MODS_ENABLE
+// #		define SPLIT_LED_STATE_ENABLE
+// #		define SPLIT_LAYER_STATE_ENABLE
+// #	endif
+// #endif
 
-#ifdef MOUSEKEY_ENABLE
-#	define MOUSEKEY_DELAY 0			// Delay between pressing a key and cursor movement
-#	define MOUSEKEY_INTERVAL 15		// Time between cursor movements in milliseconds
-#	define MOUSEKEY_MOVE_DELTA 10	// Step size for acceleration
-#	define MOUSEKEY_MAX_SPEED 9
-#	define MOUSEKEY_TIME_TO_MAX 90
-#	define MOUSEKEY_WHEEL_DELAY 16
-#	define MOUSEKEY_WHEEL_INTERVAL 30
-#	define MOUSEKEY_WHEEL_MAX_SPEED 10
-#	define MOUSEKEY_WHEEL_TIME_TO_MAX 95
-#endif
+// #ifdef MOUSEKEY_ENABLE
+// #	define MOUSEKEY_DELAY 0			// Delay between pressing a key and cursor movement
+// #	define MOUSEKEY_INTERVAL 15		// Time between cursor movements in milliseconds
+// #	define MOUSEKEY_MOVE_DELTA 10	// Step size for acceleration
+// #	define MOUSEKEY_MAX_SPEED 9
+// #	define MOUSEKEY_TIME_TO_MAX 90
+// #	define MOUSEKEY_WHEEL_DELAY 16
+// #	define MOUSEKEY_WHEEL_INTERVAL 30
+// #	define MOUSEKEY_WHEEL_MAX_SPEED 10
+// #	define MOUSEKEY_WHEEL_TIME_TO_MAX 95
+// #endif
 
-#ifdef RGB_MATRIX_ENABLE
-#	include "rgb/rgb-disable.h"
-#	undef RGB_DISABLE_WHEN_USB_SUSPENDED
-#	define RGB_DISABLE_WHEN_USB_SUSPENDED
-#	define RGB_MATRIX_TIMEOUT 180000
-#	define RGB_MATRIX_KEYPRESSES
-#	ifdef RGB_MATRIX_CUSTOM_USER
-#		define ENABLE_RGB_MATRIX_CANDY_TAP
-#		define ENABLE_RGB_MATRIX_CANDY_RAIN
-#		define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CUSTOM_CANDY_TAP
-#	else
-#		define RGB_MATRIX_SOLID_REACTIVE_GRADIENT_MODE
-#		define ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
-#		define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
-#		define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE_SIMPLE
-#	endif
-#	ifdef CONVERT_TO_KB2040
-#		define RGB_DI_PIN 17U
-#		define RGB_MATRIX_LED_COUNT 2
-#		define RGB_MATRIX_SPLIT {1, 1}
-#		define SPLIT_TRANSPORT_MIRROR
-#	endif
-#endif
+// #ifdef RGB_MATRIX_ENABLE
+// #	include "rgb/rgb-disable.h"
+// #	undef RGB_DISABLE_WHEN_USB_SUSPENDED
+// #	define RGB_DISABLE_WHEN_USB_SUSPENDED
+// #	define RGB_MATRIX_TIMEOUT 180000
+// #	define RGB_MATRIX_KEYPRESSES
+// #	ifdef RGB_MATRIX_CUSTOM_USER
+// #		define ENABLE_RGB_MATRIX_CANDY_TAP
+// #		define ENABLE_RGB_MATRIX_CANDY_RAIN
+// #		define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CUSTOM_CANDY_TAP
+// #	else
+// #		define RGB_MATRIX_SOLID_REACTIVE_GRADIENT_MODE
+// #		define ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
+// #		define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
+// #		define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE_SIMPLE
+// #	endif
+// #	ifdef CONVERT_TO_KB2040
+// #		define RGB_DI_PIN 17U
+// #		define RGB_MATRIX_LED_COUNT 2
+// #		define RGB_MATRIX_SPLIT {1, 1}
+// #		define SPLIT_TRANSPORT_MIRROR
+// #	endif
+// #endif
 
-#ifdef OLED_ENABLE
-#	define OLED_TIMEOUT 10000
-#	define OLED_BRIGHTNESS 180
-#	define OLED_FONT_H "oled/oledfont.c"
-#endif
+// #ifdef OLED_ENABLE
+// #	define OLED_TIMEOUT 10000
+// #	define OLED_BRIGHTNESS 180
+// #	define OLED_FONT_H "oled/oledfont.c"
+// #endif
 
-// Layout macros
-#ifndef __ASSEMBLER__
-#	include "layout.h"
-#endif
+// // Layout macros
+// #ifndef __ASSEMBLER__
+// #	include "layout.h"
+// #endif
