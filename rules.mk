@@ -1,2 +1,1 @@
 SRC += source.c
-BOARD = GENERIC_RP_RP2040
