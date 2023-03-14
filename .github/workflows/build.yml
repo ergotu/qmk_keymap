@@ -11,7 +11,7 @@ jobs:
       matrix:
         keyboard: [lily58]
         conv: [promicro_rp2040]
-        split: ''
+        split: [left, right] 
         # keyboard: [cradio]
         # conv: [kb2040, elite_pi]
         # split: [left, right]
