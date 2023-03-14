@@ -26,7 +26,6 @@
 #endif
 
 #ifdef SPLIT_KEYBOARD
-#	define EE_HANDS
 #	define SPLIT_WATCHDOG_ENABLE
 #	ifdef CONVERT_TO_ELITE_PI
 #		define USB_VBUS_PIN 19U
