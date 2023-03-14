@@ -1,43 +1,75 @@
-name: Build QMK firmware
+name: Userspace Build
 on: [push, workflow_dispatch]
 
 jobs:
   build:
+    name: Userspace build
     runs-on: ubuntu-latest
     container: qmkfm/qmk_cli
     strategy:
       fail-fast: false
       matrix:
-# List of keymap json files to build
-        file:
-        - keymap.json
-# End of json file list
+        keyboard: lily58
+        conv: promicro_rp2040
+        split: ''
+        # keyboard: [cradio]
+        # conv: [kb2040, elite_pi]
+        # split: [left, right]
+        # include:
+        # - keyboard: cradio
+        #   conv: kb2040
+        #   split: ''
+        # - keyboard: cradio
+        #   conv: elite_pi
+        #   split: ''
+        # - keyboard: cradio
+        #   conv: ''
+        # - keyboard: technik
 
     steps:
-
     - name: Disable git safe directory checks
       run : git config --global --add safe.directory '*'
 
     - name: Checkout QMK
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3.3.0
       with:
         repository: qmk/qmk_firmware
-        submodules: recursive
+        ref: develop
+        submodules: true
 
     - name: Checkout userspace
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3.3.0
       with:
         path: users/${{ github.actor }}
+        persist-credentials: false
 
-    - name: Build firmware
-      run: qmk compile "users/${{ github.actor }}/${{ matrix.file }}"
+    - name: Setup variables
+      env:
+        conv_suffix: $([ ${{ matrix.conv }} ] && printf "_${{ matrix.conv }}")
+        split_suffix: $([ ${{ matrix.split }} ] && printf "_${{ matrix.split }}")
+      run: |
+        echo "build_args=-e CONVERT_TO=${{ matrix.conv }} -e SPLIT=${{ matrix.split }}" >> $GITHUB_ENV
+        echo "file_suffix=${{ env.conv_suffix }}${{ env.split_suffix }}" >> $GITHUB_ENV
+        echo "archive_name=${{ matrix.keyboard }}${{ env.conv_suffix }}" >> $GITHUB_ENV
+    - name: Build
+      continue-on-error: true
+      working-directory: users/${{ github.actor }}/keymaps
+      run: qmk -v compile -j 3 ${{ env.build_args }} ${{ matrix.keyboard }}.json
+
+    - name: Rename uf2
+      if: ${{ matrix.conv != '' }}
+      continue-on-error: true
+      run: for file in *.uf2; do mv -v $file ${file%.*}${{ env.file_suffix }}.uf2; done
 
     - name: Archive firmware
       uses: actions/upload-artifact@v3
       continue-on-error: true
       with:
-        name: ${{ matrix.file }}_${{ github.actor }}
+        retention-days: 60
+        name: ${{ env.archive_name }}
         path: |
           *.hex
           *.bin
           *.uf2
+  purge:
+    uses: filterpaper/scripts/.github/workflows/delete-workflow.yml@main
