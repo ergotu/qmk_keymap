@@ -11,14 +11,14 @@ jobs:
       matrix:
         keyboard: [lily58]
         conv: [rp2040_ce]
-        split: [] 
+        split: [left, right] 
         # keyboard: [cradio]
         # conv: [kb2040, elite_pi]
         # split: [left, right]
-        # include:
-        # - keyboard: cradio
-        #   conv: kb2040
-        #   split: ''
+        include:
+        - keyboard: lily58
+          conv: elite_pi
+          split: ''
         # - keyboard: cradio
         #   conv: elite_pi
         #   split: ''
