@@ -9,6 +9,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        keyboard: [lily58]
+        conv: [elite_pi]
+        split: [left, right] 
         # keyboard: [cradio]
         # conv: [kb2040, elite_pi]
         # split: [left, right]
