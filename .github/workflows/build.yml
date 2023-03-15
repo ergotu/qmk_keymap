@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [lily58]
+        keyboard: [lily58, lily58-qwerty]
         conv: [elite_pi, promicro_rp2040, rp2040_ce]
         split: [left, right, '']
         # include:
