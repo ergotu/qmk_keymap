@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         keyboard: [lily58, lily58-qwerty]
-        conv: [elite_pi, promicro_rp2040, rp2040_ce]
+        conv: [elite_pi, rp2040_ce]
         split: [left, right, '']
         # include:
         # - keyboard: lily58
