@@ -28,6 +28,11 @@
 #	define COMBO_ONLY_FROM_LAYER 0
 #endif
 
+
+#define SPLIT_MODS_ENABLE
+#define SPLIT_LED_STATE_ENABLE
+#define SPLIT_LAYER_STATE_ENABLE
+
 // #ifdef SPLIT_KEYBOARD
 // #	define SPLIT_WATCHDOG_ENABLE
 // #	ifdef CONVERT_TO_ELITE_PI
@@ -83,11 +88,11 @@
 // #	endif
 // #endif
 
-// #ifdef OLED_ENABLE
-// #	define OLED_TIMEOUT 10000
-// #	define OLED_BRIGHTNESS 180
-// #	define OLED_FONT_H "oled/oledfont.c"
-// #endif
+#ifdef OLED_ENABLE
+#	define OLED_TIMEOUT 10000
+#	define OLED_BRIGHTNESS 180
+#	define OLED_FONT_H "oled/oledfont.c"
+#endif
 
 // // Layout macros
 // #ifndef __ASSEMBLER__

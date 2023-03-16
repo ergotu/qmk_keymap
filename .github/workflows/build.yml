@@ -11,7 +11,7 @@ jobs:
       matrix:
         keyboard: [lily58, lily58-qwerty]
         conv: [elite_pi, rp2040_ce]
-        split: [left, right, '']
+        split: ['']
         # include:
         # - keyboard: lily58
         #   conv: elite_pi
