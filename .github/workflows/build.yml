@@ -44,7 +44,7 @@ jobs:
     - name: Build
       continue-on-error: true
       # working-directory: users/${{ github.actor }}/keymaps
-      run: qmk -v compile -j 3 ${{ env.build_args }} ${{ matrix.keyboard }}
+      run: qmk -v compile -j 3 ${{ env.build_args }} -kb ${{ matrix.keyboard }} -km ${{ github.actor }}
 
     - name: Rename uf2
       if: ${{ matrix.conv != '' }}
