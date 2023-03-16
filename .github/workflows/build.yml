@@ -61,5 +61,3 @@ jobs:
           *.hex
           *.bin
           *.uf2
-  purge:
-    uses: filterpaper/scripts/.github/workflows/delete-workflow.yml@main
