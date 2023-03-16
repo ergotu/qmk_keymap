@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [splitkb/aurora/lily58]
+        keyboard: [lily58]
         conv: [elite_pi]
         split: ['']
         # include:
@@ -43,8 +43,8 @@ jobs:
         echo "archive_name=${{ matrix.keyboard }}${{ env.conv_suffix }}" >> $GITHUB_ENV
     - name: Build
       continue-on-error: true
-      # working-directory: users/${{ github.actor }}/keymaps
-      run: qmk -v compile -j 3 ${{ env.build_args }} -kb ${{ matrix.keyboard }} -km ${{ github.actor }}
+      working-directory: users/${{ github.actor }}/keymaps
+      run: qmk -v compile -j 3 ${{ env.build_args }} ${{ matrix.keyboard }}.json
 
     - name: Rename uf2
       if: ${{ matrix.conv != '' }}
