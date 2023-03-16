@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         keyboard: [splitkb/aurora/lily58]
-        conv: [elite_pi, rp2040_ce]
+        conv: [elite_pi]
         split: ['']
         # include:
         # - keyboard: lily58
