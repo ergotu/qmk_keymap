@@ -61,3 +61,4 @@ jobs:
           *.hex
           *.bin
           *.uf2
+          *
