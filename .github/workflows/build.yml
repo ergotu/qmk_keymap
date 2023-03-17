@@ -18,17 +18,18 @@ jobs:
         #   split: ''
 
     steps:
-    - name: Disable git safe directory checks
+    - name: Configure safe directory
       run : git config --global --add safe.directory '*'
 
     - name: Checkout QMK
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3.4.0
       with:
         repository: qmk/qmk_firmware
-        submodules: recursive
+        ref: develop
+        submodules: true
 
     - name: Checkout userspace
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3.4.0
       with:
         path: users/${{ github.actor }}
         persist-credentials: false
