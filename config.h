@@ -41,6 +41,9 @@
 #	endif
 #endif
 
+#undef OLED_FONT_H
+#define OLED_FONT_H "oled/oledfont.c"
+
 // Layout macros
 #ifndef __ASSEMBLER__
 #	include "layout.h"
