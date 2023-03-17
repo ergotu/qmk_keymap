@@ -43,10 +43,6 @@
 
 #undef OLED_FONT_H
 #define OLED_FONT_H "oled/oledfont.c"
-#define CMK 1
-#define NUM 2
-#define SYM 3
-#define FNC 4
 // Layout macros
 #ifndef __ASSEMBLER__
 #	include "layout.h"
