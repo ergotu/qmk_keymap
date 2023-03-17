@@ -12,6 +12,7 @@ jobs:
         keyboard: [lily58, lily58-wrapper, cradio]
         conv: [elite_pi]
         split: ['']
+        pet: ['', luna, felix]
         # include:
         # - keyboard: lily58
         #   conv: elite_pi
