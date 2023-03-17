@@ -276,7 +276,7 @@ static void render_bongocat(void) {
 // Init and rendering calls
 oled_rotation_t oled_init_user(oled_rotation_t const rotation) {
 	if (is_keyboard_master()) {
-		return is_keyboard_left() ? rotation : OLED_ROTATION_270;
+		return is_keyboard_left() ? OLED_ROTATION_270 : OLED_ROTATION_270;
 	} else {
 		return OLED_ROTATION_270;
 	}

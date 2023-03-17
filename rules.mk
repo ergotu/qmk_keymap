@@ -6,6 +6,7 @@ SRC += ergotu.c
 # OLED
 ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1))
 	OLED_ENABLE = yes
+	WPM_ENABLE = yes
 	ifneq ($(strip $(OLED)),)
 		OPT_DEFS += -D${OLED}
 		SRC += oled-icons.c oled-luna.c
