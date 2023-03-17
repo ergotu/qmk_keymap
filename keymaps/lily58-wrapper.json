@@ -4,11 +4,11 @@
     "version": 1,
     "layout": "LAYOUT",
     "layers": [
-        [C_58(_BASE)],
-        [C_58(_COLE)],
-        [C_58(_NUMB)],
-        [C_58(_SYMB)],
-        [C_58(_FUNC)]
+        ["C_58(_BASE)"],
+        ["C_58(_COLE)"],
+        ["C_58(_NUMB)"],
+        ["C_58(_SYMB)"],
+        ["C_58(_FUNC)"]
     ],
     "config": {
         "features": {
