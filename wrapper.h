@@ -150,6 +150,7 @@ KC_LSFT, l11, l12, l13, l14, l15,   r11, r12, r13, r14, r15, KC_ENT,  \
                  KC_LSFT, l11, l12, l13, l14, l15, r11, r12, r13, r14, r15, KC_ENT,  \
 KC_DEL, KC_VOLD, KC_VOLU, RSA_T(KC_ESC), l16, l17, r16, r17, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT
 
+// Convert 3x5_2 to 58-key
 #define C_58(k) CONV_58(k)
 #define CONV_58( \
 	     l01, l02, l03, l04, l05,   r01, r02, r03, r04, r05, \

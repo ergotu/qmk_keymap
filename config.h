@@ -1,8 +1,45 @@
 #pragma once
 
-#define SPLIT_MODS_ENABLE
-#define SPLIT_LED_STATE_ENABLE
-#define SPLIT_LAYER_STATE_ENABLE
+
+// Common QMK settings
+#define TAP_CODE_DELAY 5
+#define TAP_HOLD_CAPS_DELAY 25
+#define GRAVE_ESC_SHIFT_OVERRIDE
+#define USB_SUSPEND_WAKEUP_DELAY 2000
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U
+// Space saving options
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+#define LAYER_STATE_8BIT
+#define NO_ACTION_ONESHOT
+// Tap-hold settings
+#define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_TERM 220
+#define TAPPING_TERM_PER_KEY
+#define QUICK_TAP_TERM 110
+#define QUICK_TAP_TERM_PER_KEY
+#define PERMISSIVE_HOLD_PER_KEY
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+
+
+#ifdef SPLIT_KEYBOARD
+#	define SPLIT_WATCHDOG_ENABLE
+#	ifdef CONVERT_TO_ELITE_PI
+#		define USB_VBUS_PIN 19U
+#	else
+#		define SPLIT_USB_DETECT
+#	endif
+#	ifdef OLED_ENABLE
+#		define SPLIT_OLED_ENABLE
+#		define SPLIT_MODS_ENABLE
+#		define SPLIT_LED_STATE_ENABLE
+#		define SPLIT_LAYER_STATE_ENABLE
+#	elif RGB_MATRIX_ENABLE
+#		define SPLIT_MODS_ENABLE
+#		define SPLIT_LED_STATE_ENABLE
+#		define SPLIT_LAYER_STATE_ENABLE
+#	endif
+#endif
 
 #ifdef OLED_ENABLE
 #   undef OLED_FONT_H
@@ -14,6 +51,4 @@
 #endif
 
 // Wrapper macros
-#ifndef __ASSEMBLER__
-#	include "wrapper.h"
-#endif
+#include "wrapper.h"
