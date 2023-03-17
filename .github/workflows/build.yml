@@ -41,7 +41,7 @@ jobs:
         split_suffix: $([ ${{ matrix.split }} ] && printf "_${{ matrix.split }}")
       run: |
         echo "build_args=-e CONVERT_TO=${{ matrix.conv }} -e SPLIT=${{ matrix.split }} -e OLED=${{ matrix.pet }}" >> $GITHUB_ENV
-        echo "file_suffix=${{ env.conv_suffix }}${{ env.split_suffix }}" >> $GITHUB_ENV
+        echo "file_suffix=${{ env.conv_suffix }}${{ env.split_suffix }}${{ matrix.pet }}" >> $GITHUB_ENV
         echo "archive_name=${{ matrix.keyboard }}${{ env.conv_suffix }}" >> $GITHUB_ENV
     - name: Build
       continue-on-error: true
