@@ -50,5 +50,7 @@
 #   define FNC 4
 #endif
 
-// Wrapper macros
-#include "wrapper.h"
+// Layout macros
+#ifndef __ASSEMBLER__
+#	include "layout.h"
+#endif
