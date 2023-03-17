@@ -120,7 +120,7 @@ HRML(l06, l07, l08, l09), l10,   r06, HRMR(r07, r08, r09, r10), \
 // Layout aliases for json keymap
 #define LAYOUT_34key_w(...) LAYOUT_split_3x5_2(__VA_ARGS__)
 #define LAYOUT_crkbd_w(...) LAYOUT_split_3x6_3(__VA_ARGS__)
-#define LAYOUT_58key_w(...) LAYOUT_split_4x6_4(__VA_ARGS__)
+#define LAYOUT_58key_w(...) LAYOUT(__VA_ARGS__)
 #define LAYOUT_ortho_w(...) LAYOUT_ortho_4x12(__VA_ARGS__)
 
 

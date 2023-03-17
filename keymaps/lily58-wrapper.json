@@ -2,7 +2,7 @@
     "keyboard": "splitkb/aurora/lily58/rev1",
     "keymap": "lily58",
     "version": 1,
-    "layout": "LAYOUT",
+    "layout": "LAYOUT_58key_w",
     "layers": [
         ["C_58(_BASE)"],
         ["C_58(_COLE)"],
