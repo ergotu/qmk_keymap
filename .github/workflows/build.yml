@@ -9,10 +9,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [lily58, lily58-wrapper, cradio]
+        keyboard: [lily58]
         conv: [elite_pi]
         split: ['']
-        pet: ['', luna, felix]
+        pet: ['', LUNA, FELIX]
         # include:
         # - keyboard: lily58
         #   conv: elite_pi
@@ -40,7 +40,7 @@ jobs:
         conv_suffix: $([ ${{ matrix.conv }} ] && printf "_${{ matrix.conv }}")
         split_suffix: $([ ${{ matrix.split }} ] && printf "_${{ matrix.split }}")
       run: |
-        echo "build_args=-e CONVERT_TO=${{ matrix.conv }} -e SPLIT=${{ matrix.split }}" >> $GITHUB_ENV
+        echo "build_args=-e CONVERT_TO=${{ matrix.conv }} -e SPLIT=${{ matrix.split }} -e OLED=${{ matrix.pet }}" >> $GITHUB_ENV
         echo "file_suffix=${{ env.conv_suffix }}${{ env.split_suffix }}" >> $GITHUB_ENV
         echo "archive_name=${{ matrix.keyboard }}${{ env.conv_suffix }}" >> $GITHUB_ENV
     - name: Build
