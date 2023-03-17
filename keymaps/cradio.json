@@ -1,6 +1,6 @@
 {
 	"keyboard": "cradio",
-	"keymap": "ergotu",
+	"keymap": "Ergotu",
 	"layout": "LAYOUT_34key_w",
 	"layers": [
 		[ "HRM(_BASE)" ],
