@@ -53,7 +53,7 @@ enum custom_layers { BSE, CMK, NUM, SYM, FNC };
 #define _COLE \
 /* ╭────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────╮ */\
 /* │  Q     │  W     │  F     │  P     │  B     │   │  J     │  L     │  U     │  Y     │ ' "    │ */\
-	KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,        KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,    \
+	KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,        KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,    \
 /* ├────────┼────────┼────────┼────────┼────────┤   ├────────┼────────┼────────┼────────┼────────┤ */\
 /* │  A     │  R     │  S     │  T     │  G     │   │  M     │  N     │  E     │  I     │  O     │ */\
 	KC_A,    KC_R,    KC_S,    KC_T,    KC_G,        KC_M,    KC_N,    KC_E,    KC_I,    KC_O,       \
