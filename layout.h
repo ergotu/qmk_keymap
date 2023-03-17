@@ -34,7 +34,7 @@
 #define SA_DN S(A(KC_DOWN))
 
 // Layers
-enum layers { BSE, CMK, NUM, SYM, FNC };
+layers = { BSE, CMK, NUM, SYM, FNC };
 
 // Default 3x5_2 split layout
 #define _BASE \
