@@ -40,3 +40,8 @@
 #		define SPLIT_LAYER_STATE_ENABLE
 #	endif
 #endif
+
+// Layout macros
+#ifndef __ASSEMBLER__
+#	include "layout.h"
+#endif
