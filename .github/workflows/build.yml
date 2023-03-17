@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [lily58, lily58-wrapper, crkbd]
+        keyboard: [lily58, lily58-wrapper, cradio]
         conv: [elite_pi]
         split: ['']
         # include:
