@@ -12,3 +12,8 @@
 #   define SYM 3
 #   define FNC 4
 #endif
+
+// Wrapper macros
+#ifndef __ASSEMBLER__
+#	include "wrapper.h"
+#endif
