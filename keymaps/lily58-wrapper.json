@@ -1,6 +1,6 @@
 {
     "keyboard": "splitkb/aurora/lily58/rev1",
-    "keymap": "Ergotu",
+    "keymap": "ergotu",
     "version": 1,
     "layout": "LAYOUT_58key_w",
     "layers": [
