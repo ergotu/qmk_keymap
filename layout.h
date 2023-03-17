@@ -33,9 +33,6 @@
 #define SA_UP S(A(KC_UP))
 #define SA_DN S(A(KC_DOWN))
 
-// Layers
-layers = { BSE, CMK, NUM, SYM, FNC };
-
 // Default 3x5_2 split layout
 #define _BASE \
 /* ╭────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────╮ */\
