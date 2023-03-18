@@ -27,8 +27,8 @@
 
 #include QMK_KEYBOARD_H
 
-#ifndef CMK
-#	define CMK 1
+#ifndef QWE
+#	define QWE 1
 #endif
 
 #define LUNA_SIZE 96
