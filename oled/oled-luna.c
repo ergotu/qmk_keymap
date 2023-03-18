@@ -200,7 +200,7 @@ static void render_logo(void) {
 		0x20, 0xd1, 0xd2, 0xd3, 0x20, 0};
 
 	oled_write_P(corne_logo, false);
-	oled_write_P(layer_state_is(CMK) ? PSTR("corne") : katakana, false);
+	oled_write_P(layer_state_is(QWE) ? PSTR("corne") : katakana, false);
 }
 
 
