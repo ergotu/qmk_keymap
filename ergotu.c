@@ -65,12 +65,12 @@ bool process_record_user(uint16_t const keycode, keyrecord_t *record) {
 		}
 #endif
 		// Clipboard shortcuts.
-		// switch(keycode) {
-		// 	case TH_SLSH: return process_tap_hold(Z_UND, record);
-		// 	case TH_DOT:  return process_tap_hold(Z_CUT, record);
-		// 	case TH_COMM: return process_tap_hold(Z_CPY, record);
-		// 	case TH_M:    return process_tap_hold(Z_PST, record);
-		// }
+		switch(keycode) {
+			case TH_SLSH: return process_tap_hold(Z_UND, record);
+			case TH_DOT:  return process_tap_hold(Z_CUT, record);
+			case TH_COMM: return process_tap_hold(Z_CPY, record);
+			case TH_M:    return process_tap_hold(Z_PST, record);
+		}
 	}
 	return true;
 }
