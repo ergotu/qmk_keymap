@@ -4,8 +4,8 @@
     "version": 1,
     "layout": "LAYOUT_58key_w",
     "layers": [
-        ["C_58(HRM(_COLE))"],
-        ["C_58(HRM(_QWER))"],
+        ["C_58(_COLE)"],
+        ["C_58(_QWER)"],
         ["C_58(_NUMB)"],
         ["C_58(_SYMB)"],
         ["C_58(_FUNC)"]
