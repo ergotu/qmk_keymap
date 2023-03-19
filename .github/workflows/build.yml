@@ -32,12 +32,12 @@ jobs:
     - name: Checkout userspace
       uses: actions/checkout@v3.4.0
       with:
-        path: users/ergotu
+        path: users/${{ github.actor }}
         persist-credentials: false
 
     - name: Build
       continue-on-error: false
-      working-directory: users/ergotu/keymaps
+      working-directory: users/${{ github.actor }}/keymaps
       env:
         build_args: -e CONVERT_TO=${{ matrix.conv }} -e SPLIT=${{ matrix.split }} -e OLED=${{ matrix.pet }}
       run: qmk -v compile -j 3 ${{ env.build_args }} ${{ matrix.keyboard }}.json
