@@ -11,12 +11,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [cradio, corne]
-        conv: [stemcell, elite_pi]
-        split: [left, right]
+        keyboard: [lily58, crkbd]
+        conv: [elite_pi]
+        split: ['']
         branch: [develop]
-        include:
-        - keyboard: technik
 
     steps:
     - name: Add safe directory
