@@ -10,7 +10,8 @@
 // Space saving options
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
-#define LAYER_STATE_8BIT
+#define NO_MUSIC_MODE
+//#define LAYER_STATE_8BIT
 //#define NO_ACTION_ONESHOT
 
 // Tap-hold settings
