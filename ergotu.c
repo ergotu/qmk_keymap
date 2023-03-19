@@ -49,21 +49,24 @@ static inline bool process_tap_hold(uint16_t hold_keycode, keyrecord_t *record) 
 
 bool process_record_user(uint16_t const keycode, keyrecord_t *record) {
 	if (record->event.pressed) {
-#if (defined TAPPING_TERM_PER_KEY || defined PERMISSIVE_HOLD_PER_KEY)
+	#if (defined TAPPING_TERM_PER_KEY || defined PERMISSIVE_HOLD_PER_KEY)
 		tap_timer = timer_read();
-#endif
-#ifdef AUTOCORRECT
+	#endif
+
+	#ifdef AUTOCORRECT
 		extern bool process_autocorrect(uint16_t keycode, keyrecord_t* record);
 		if (!process_autocorrect(keycode, record)) {
 			return false;
 		}
-#endif
-#ifdef CAPS_UNLOCK
+	#endif
+
+	#ifdef CAPS_UNLOCK
 		extern bool process_caps_unlock(uint16_t keycode, keyrecord_t *record);
 		if (!process_caps_unlock(keycode, record)) {
 			return false;
 		}
-#endif
+	#endif
+	
 		// Clipboard shortcuts.
 		switch(keycode) {
 			case TH_SLSH: return process_tap_hold(Z_UND, record);
