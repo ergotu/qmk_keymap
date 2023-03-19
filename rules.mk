@@ -27,12 +27,6 @@ else
 	SWAP_HANDS_ENABLE = yes
 	DEBOUNCE_TYPE = asym_eager_defer_pk
 #	EEPROM_DRIVER = transient
-	ifeq ($(strip $(CONVERT_TO)), kb2040)
-		RGB_MATRIX_ENABLE = yes
-		RGB_MATRIX_DRIVER = WS2812
-		RGB_MATRIX_CUSTOM_USER = yes
-		SRC += rgb-matrix.c
-	endif
 endif
 
 # OLED
