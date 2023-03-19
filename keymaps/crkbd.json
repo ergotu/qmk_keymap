@@ -1,5 +1,5 @@
 {
-    "keyboard": "crkbd",
+    "keyboard": "crkbd/rev1",
     "keymap": "ergotu",
     "version": 1,
     "layout": "LAYOUT_crkbd_w",
