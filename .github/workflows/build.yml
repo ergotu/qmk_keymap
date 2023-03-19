@@ -9,14 +9,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [lily58, crkbd]
+        keyboard: [lily58]
         conv: [elite_pi]
         split: ['']
         pet: ['', LUNA, FELIX]
-        # include:
-        # - keyboard: lily58
-        #   conv: elite_pi
-        #   split: ''
+        include:
+        - keyboard: crkbd
+          conv: elite_pi
+          split: ''
 
     steps:
     - name: Configure safe directory
