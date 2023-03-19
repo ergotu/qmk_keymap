@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [lily58]
+        keyboard: [lily58, crkbd]
         conv: [elite_pi]
         split: ['']
         pet: ['', LUNA, FELIX]

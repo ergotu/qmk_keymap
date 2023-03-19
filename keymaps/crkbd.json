@@ -1,0 +1,13 @@
+{
+    "keyboard": "crkbd",
+    "keymap": "ergotu",
+    "version": 1,
+    "layout": "LAYOUT_58key_w",
+    "layers": [
+        ["C_42(_BASE)"],
+        ["C_42(_QWER)"],
+        ["C_42(_NUMB)"],
+        ["C_42(_SYMB)"],
+        ["C_42(_FUNC)"]
+    ]
+}
