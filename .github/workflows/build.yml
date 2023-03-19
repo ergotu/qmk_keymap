@@ -45,7 +45,7 @@ jobs:
         echo "file_suffix=${{ env.conv_suffix }}${{ env.split_suffix }}${{ env.pet_suffix }}" >> $GITHUB_ENV
         echo "archive_name=${{ matrix.keyboard }}${{ env.conv_suffix }}" >> $GITHUB_ENV
     - name: Build
-      continue-on-error: true
+      continue-on-error: false
       working-directory: users/ergotu/keymaps
       run: qmk -v compile -j 3 ${{ env.build_args }} ${{ matrix.keyboard }}.json
 
