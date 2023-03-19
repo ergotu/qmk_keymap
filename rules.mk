@@ -53,3 +53,8 @@ ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1 crk
 		SRC += oled-icons.c oled-bongocat.c
 	endif
 endif
+
+# Encoders
+ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1))
+	ENCODERS_ENABLE = yes
+endif
