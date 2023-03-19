@@ -36,14 +36,14 @@ ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1 crk
 endif
 
 # RGB boards
-ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), crkbd/rev1))
+ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), ''))
 	RGB_MATRIX_ENABLE = yes
 	RGB_MATRIX_CUSTOM_USER = yes
 	SRC += rgb-matrix.c
 endif
 
 # OLED
-ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1 crkbd/rev1))
+ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1))
 	OLED_ENABLE = yes
 	WPM_ENABLE = yes
 	ifneq ($(strip $(OLED)),)
