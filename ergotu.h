@@ -47,3 +47,8 @@ mod_bits = (kc & 0x1000) ? ((kc >> 8) & 0xf) << 4 : ((kc >> 8) & 0xf)
 // Typing interval macros
 #define IS_TYPING() (timer_elapsed(tap_timer) < TAPPING_TERM)
 #define IS_TYPING_TERM ((TAPPING_TERM * 2) - timer_elapsed(tap_timer))
+
+#define IS_HRM(keycode) \
+    keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX \
+    && (((keycode & 0xff) <= KC_Z && (keycode & 0xff) >= KC_A) \
+        || (keycode & 0xff) == KC_QUOT || (keycode & 0xff) == KC_TAB)
