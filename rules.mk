@@ -29,8 +29,21 @@ else
 #	EEPROM_DRIVER = transient
 endif
 
+# Split boards
+ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1 crkbd/rev1))
+	# OPT_DEFS += -DAUTOCORRECT
+	# SRC += autocorrect.c
+endif
+
+# RGB boards
+ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), crkbd/rev1))
+	RGB_MATRIX_ENABLE = yes
+	RGB_MATRIX_CUSTOM_USER = yes
+	SRC += rgb-matrix.c
+endif
+
 # OLED
-ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1))
+ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1 crkbd/rev1))
 	OLED_ENABLE = yes
 	WPM_ENABLE = yes
 	ifneq ($(strip $(OLED)),)
