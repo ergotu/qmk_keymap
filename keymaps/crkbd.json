@@ -5,7 +5,7 @@
     "layout": "LAYOUT_crkbd_w",
     "layers": [
         ["C_42(_COLE)"],
-        ["C_42(_QWER)"],
+        ["C_42(HRM(_QWER))"],
         ["C_42(_NUMB)"],
         ["C_42(_SYMB)"],
         ["C_42(_FUNC)"]
