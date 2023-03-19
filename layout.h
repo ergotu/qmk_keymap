@@ -34,10 +34,10 @@
 #define SA_DN S(A(KC_DOWN))
 
 // Layers
-enum custom_layers { BSE, QWE, NUM, SYM, FNC };
+enum custom_layers { BSE, TGL, NUM, SYM, FNC };
 
 // Default 3x5_2 split layout
-#define _BASE \
+#define _COLE \
 /* ╭────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────╮ */\
 /* │  Q     │  W     │  F     │  P     │  B     │   │  J     │  L     │  U     │  Y     │ ' "    │ */\
 	KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,        KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,    \
@@ -61,7 +61,7 @@ enum custom_layers { BSE, QWE, NUM, SYM, FNC };
 /* │  Z     │  X     │  C     │  V     │  B     │   │  N     │  M     │ , <    │ . >    │ / ?    │ */\
 	KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,    \
 /* ╰────────┴────────┴────────┼────────┼────────┤   ├────────┼────────┼────────┴────────┴────────╯ */\
-		                       _______, _______,     _______, _______
+              LT(SYM,KC_TAB), LCA_T(KC_SPC),     RSFT_T(KC_ENT), LT(NUM,KC_BSPC)
 /*                            ╰────────┴────────╯   ╰────────┴────────╯ */
 #define _NUMB \
 /* ╭────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────╮ */\
@@ -92,7 +92,7 @@ enum custom_layers { BSE, QWE, NUM, SYM, FNC };
 #define _FUNC \
 /* ╭────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────╮ */\
 /* │ BOOT   │  F1    │  F2    │  F3    │ F10    │   │        │ WH UP  │ WH DN  │        │COLEMAK │ */\
-	QK_BOOT, KC_F1,   KC_F2,   KC_F3,   KC_F10,      _______, KC_WH_U, KC_WH_D, _______, TG(QWE),    \
+	QK_BOOT, KC_F1,   KC_F2,   KC_F3,   KC_F10,      _______, KC_WH_U, KC_WH_D, _______, TG(TGL),    \
 /* ├────────┼────────┼────────┼────────┼────────┤   ├────────┼────────┼────────┼────────┼────────┤ */\
 /* │        │  F4    │  F5    │  F6    │ F11    │   │ MS LFT │ MS DN  │ MS UP  │ MS RHT │        │ */\
 	_______, KC_F4,   KC_F5,   KC_F6,   KC_F11,      KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______,    \
