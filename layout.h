@@ -48,7 +48,7 @@ enum custom_layers { BSE, TGL, NUM, SYM, FNC };
 /* │  Z     │  X     │  C     │  D     │  V     │   │  K     │  H     │ , <    │ . >    │ / ?    │ */\
 	KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,        KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,    \
 /* ╰────────┴────────┴────────┼────────┼────────┤   ├────────┼────────┼────────┴────────┴────────╯ */\
-              LT(SYM,KC_TAB), LCA_T(KC_SPC),     RSFT_T(KC_ENT), LT(NUM,KC_BSPC)
+              	  LT(SYM,KC_TAB), LCA_T(KC_SPC),     RSFT_T(KC_ENT), LT(NUM,KC_BSPC)
 /*                            ╰────────┴────G───╯   ╰────────┴────────╯ */
 #define _QWER \
 /* ╭────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────╮ */\
@@ -61,7 +61,7 @@ enum custom_layers { BSE, TGL, NUM, SYM, FNC };
 /* │  Z     │  X     │  C     │  V     │  B     │   │  N     │  M     │ , <    │ . >    │ / ?    │ */\
 	KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,    \
 /* ╰────────┴────────┴────────┼────────┼────────┤   ├────────┼────────┼────────┴────────┴────────╯ */\
-              LT(SYM,KC_TAB), LCA_T(KC_SPC),     RSFT_T(KC_ENT), LT(NUM,KC_BSPC)
+            	  LT(SYM,KC_TAB), LCA_T(KC_SPC),     RSFT_T(KC_ENT), LT(NUM,KC_BSPC)
 /*                            ╰────────┴────────╯   ╰────────┴────────╯ */
 #define _NUMB \
 /* ╭────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────╮ */\
