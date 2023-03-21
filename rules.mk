@@ -38,8 +38,6 @@ endif
 # RGB boards
 ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/corne/rev1))
 	RGB_MATRIX_ENABLE = yes
-	RGB_MATRIX_CUSTOM_USER = yes
-	SRC += rgb-matrix.c
 endif
 
 # OLED
