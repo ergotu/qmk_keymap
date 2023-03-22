@@ -18,7 +18,7 @@ BOOTMAGIC_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 
 VPATH += $(USER_PATH)/oled $(USER_PATH)/features
-SRC += ergotu.c
+SRC += ergotu.c achordion.c
 
 ifeq ($(strip $(MCU)), atmega32u4)
 	LTO_ENABLE = yes
