@@ -15,6 +15,7 @@ COMBO_ENABLE = no
 EXTRAKEY_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 BOOTMAGIC_ENABLE = yes
+CAPS_WORD_ENABLE = yes
 
 VPATH += $(USER_PATH)/oled $(USER_PATH)/features
 SRC += ergotu.c achordion.c
@@ -32,7 +33,7 @@ endif
 # Split boards
 ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1 splitkb/aurora/corne/rev1))
 	# OPT_DEFS += -DAUTOCORRECT
-	# SRC += autocorrect.c
+	# SRC += autocorrect.
 endif
 
 # RGB boards
