@@ -1,5 +1,4 @@
 #include "ergotu.h"
-#include "features/achordion.h"
 
 #if (defined TAPPING_TERM_PER_KEY || defined PERMISSIVE_HOLD_PER_KEY)
 static uint_fast16_t tap_timer = 0;
@@ -47,12 +46,12 @@ static inline bool process_tap_hold(uint16_t hold_keycode, keyrecord_t *record) 
 	return true;
 }
 
-void matrix_scan_user(void) {
-  achordion_task();
-}
+// void matrix_scan_user(void) {
+//   achordion_task();
+// }
 
 bool process_record_user(uint16_t const keycode, keyrecord_t *record) {
-	if (!process_achordion(keycode, record)) { return false; }
+	// if (!process_achordion(keycode, record)) { return false; }
 	if (record->event.pressed) {
 	#if (defined TAPPING_TERM_PER_KEY || defined PERMISSIVE_HOLD_PER_KEY)
 		tap_timer = timer_read();
