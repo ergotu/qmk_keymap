@@ -1,6 +1,23 @@
 #include "ergotu.h"
 #include "features/achordion.h"
 
+void matrix_scan_user(void) {
+  achordion_task();
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 5) { return true; }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
 #if (defined TAPPING_TERM_PER_KEY || defined PERMISSIVE_HOLD_PER_KEY)
 static uint_fast16_t tap_timer = 0;
 #endif
@@ -37,7 +54,6 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 }
 #endif
 
-
 // Send custom hold keycode for mod tap.
 static inline bool process_tap_hold(uint16_t hold_keycode, keyrecord_t *record) {
 	if (!record->tap.count) {
@@ -47,36 +63,8 @@ static inline bool process_tap_hold(uint16_t hold_keycode, keyrecord_t *record) 
 	return true;
 }
 
-void matrix_scan_user(void) {
-  achordion_task();
-}
-
-bool achordion_chord(uint16_t tap_hold_keycode,
-                     keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode,
-                     keyrecord_t* other_record) {
-  // Exceptionally consider the following chords as holds, even though they
-  // are on the same hand in Dvorak.
-//   switch (tap_hold_keycode) {
-//     case HOME_A:  // A + U.
-//       if (other_keycode == HOME_U) { return true; }
-//       break;
-
-//     case HOME_S:  // S + H and S + G.
-//       if (other_keycode == HOME_H || other_keycode == KC_G) { return true; }
-//       break;
-//   }
-
-  // Also allow same-hand holds when the other key is in the rows below the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
-
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
 bool process_record_user(uint16_t const keycode, keyrecord_t *record) {
-	if (!process_achordion(keycode, record)) { return false; }
+	// if (!process_achordion(keycode, record)) { return false; }
 	if (record->event.pressed) {
 	#if (defined TAPPING_TERM_PER_KEY || defined PERMISSIVE_HOLD_PER_KEY)
 		tap_timer = timer_read();
