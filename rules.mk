@@ -49,7 +49,7 @@ ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1))
 		OPT_DEFS += -D${OLED}
 		SRC += oled-icons.c oled-luna.c
 	else
-		SRC += oled-icons.c oled-single.c
+		SRC += oled-icons.c oled.c
 	endif
 endif
 
