@@ -25,7 +25,7 @@
 #define SA_UP S(A(KC_UP))
 #define SA_DN S(A(KC_DOWN))
 
-// Layers
+// Layers 
 enum custom_layers { BSE, TGL, NUM, SYM, FNC };
 
 // Default 3x5_2 split layout
@@ -40,7 +40,7 @@ enum custom_layers { BSE, TGL, NUM, SYM, FNC };
 /* │  Z     │  X     │  C     │  D     │  V     │   │  K     │  H     │ , <    │ . >    │ / ?    │ */\
 	KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,        KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,    \
 /* ╰────────┴────────┴────────┼────────┼────────┤   ├────────┼────────┼────────┴────────┴────────╯ */\
-              	  LT(SYM,KC_TAB), LCA_T(KC_SPC),     RSFT_T(KC_ENT), LT(NUM,KC_BSPC)
+              	  			   MO(SYM), KC_SPC,      KC_ENT,  MO(NUM)
 /*                            ╰────────┴────G───╯   ╰────────┴────────╯ */
 #define _QWER \
 /* ╭────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────╮ */\
@@ -53,7 +53,7 @@ enum custom_layers { BSE, TGL, NUM, SYM, FNC };
 /* │  Z     │  X     │  C     │  V     │  B     │   │  N     │  M     │ , <    │ . >    │ / ?    │ */\
 	KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,    \
 /* ╰────────┴────────┴────────┼────────┼────────┤   ├────────┼────────┼────────┴────────┴────────╯ */\
-            	  LT(SYM,KC_TAB), LCA_T(KC_SPC),     RSFT_T(KC_ENT), LT(NUM,KC_BSPC)
+              	  			   MO(SYM), KC_SPC,      KC_ENT,  MO(NUM)
 /*                            ╰────────┴────────╯   ╰────────┴────────╯ */
 #define _NUMB \
 /* ╭────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────╮ */\
