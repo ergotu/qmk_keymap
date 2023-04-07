@@ -9,42 +9,47 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [lily58, lily58-qwerty]
-        conv: [elite_pi, rp2040_ce]
-        split: [left, right, '']
-        # include:
-        # - keyboard: lily58
-        #   conv: elite_pi
-        #   split: ''
+        keyboard: [lily58]
+        conv: [elite_pi]
+        split: ['']
+        pet: ['', LUNA, FELIX]
+        include:
+        - keyboard: crkbd
+          conv: elite_pi
+          split: ''
 
     steps:
-    - name: Disable git safe directory checks
+    - name: Configure safe directory
       run : git config --global --add safe.directory '*'
 
     - name: Checkout QMK
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3.5.0
       with:
         repository: qmk/qmk_firmware
-        submodules: recursive
+#         ref: develop
+        submodules: true
 
     - name: Checkout userspace
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3.5.0
       with:
         path: users/${{ github.actor }}
         persist-credentials: false
+
+    - name: Build
+      continue-on-error: false
+      working-directory: users/${{ github.actor }}/keymaps
+      env:
+        build_args: -e CONVERT_TO=${{ matrix.conv }} -e SPLIT=${{ matrix.split }} -e OLED=${{ matrix.pet }}
+      run: qmk -v compile -j 3 ${{ env.build_args }} ${{ matrix.keyboard }}.json
 
     - name: Setup variables
       env:
         conv_suffix: $([ ${{ matrix.conv }} ] && printf "_${{ matrix.conv }}")
         split_suffix: $([ ${{ matrix.split }} ] && printf "_${{ matrix.split }}")
+        pet_suffix: $([ ${{ matrix.pet }} ] && printf "_${{ matrix.pet }}")
       run: |
-        echo "build_args=-e CONVERT_TO=${{ matrix.conv }} -e SPLIT=${{ matrix.split }}" >> $GITHUB_ENV
-        echo "file_suffix=${{ env.conv_suffix }}${{ env.split_suffix }}" >> $GITHUB_ENV
+        echo "file_suffix=${{ env.conv_suffix }}${{ env.split_suffix }}${{ env.pet_suffix }}" >> $GITHUB_ENV
         echo "archive_name=${{ matrix.keyboard }}${{ env.conv_suffix }}" >> $GITHUB_ENV
-    - name: Build
-      continue-on-error: true
-      working-directory: users/${{ github.actor }}/keymaps
-      run: qmk -v compile -j 3 ${{ env.build_args }} ${{ matrix.keyboard }}.json
 
     - name: Rename uf2
       if: ${{ matrix.conv != '' }}

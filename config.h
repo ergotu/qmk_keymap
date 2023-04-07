@@ -6,11 +6,14 @@
 #define GRAVE_ESC_SHIFT_OVERRIDE
 #define USB_SUSPEND_WAKEUP_DELAY 2000
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U
+
 // Space saving options
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
-#define LAYER_STATE_8BIT
-#define NO_ACTION_ONESHOT
+#define NO_MUSIC_MODE
+//#define LAYER_STATE_8BIT
+//#define NO_ACTION_ONESHOT
+
 // Tap-hold settings
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_TERM 220
@@ -20,32 +23,46 @@
 #define PERMISSIVE_HOLD_PER_KEY
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
-#undef ENCODER_RESOLUTION
-#define ENCODER_RESOLUTION 2
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
+#define IS_COMMAND() (get_mods() == MOD_MASK_CTRL)
 
 #ifdef COMBO_ENABLE
 #	define COMBO_TERM 30
 #	define COMBO_ONLY_FROM_LAYER 0
 #endif
 
-// #ifdef SPLIT_KEYBOARD
-// #	define SPLIT_WATCHDOG_ENABLE
-// #	ifdef CONVERT_TO_ELITE_PI
-// #		define USB_VBUS_PIN 19U
-// #	else
-// #		define SPLIT_USB_DETECT
-// #	endif
-// #	ifdef OLED_ENABLE
-// #		define SPLIT_OLED_ENABLE
-// #		define SPLIT_MODS_ENABLE
-// #		define SPLIT_LED_STATE_ENABLE
-// #		define SPLIT_LAYER_STATE_ENABLE
-// #	elif RGB_MATRIX_ENABLE
-// #		define SPLIT_MODS_ENABLE
-// #		define SPLIT_LED_STATE_ENABLE
-// #		define SPLIT_LAYER_STATE_ENABLE
-// #	endif
-// #endif
+#ifdef SPLIT_KEYBOARD
+#	define SPLIT_WATCHDOG_ENABLE
+#	ifdef CONVERT_TO_ELITE_PI
+#		define USB_VBUS_PIN 19U
+#	else
+#		define SPLIT_USB_DETECT
+#	endif
+#   ifdef POINTING_DEVICE_ENABLE
+#       undef SPLIT_OLED_ENABLE
+#       define SPLIT_POINTING_ENABLE
+#       define POINTING_DEVICE_RIGHT
+#       define CIRQUE_PINNACLE_CURVED_OVERLAY
+#       define CIRQUE_PINNACLE_ATTENUATION EXTREG__TRACK_ADCCONFIG__ADC_ATTENUATE_2X
+#       define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_ABSOLUTE_MODE
+#       define CIRQUE_PINNACLE_TAP_ENABLE
+#       define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
+#       define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+#		define SPLIT_MODS_ENABLE
+#		define SPLIT_LED_STATE_ENABLE
+#		define SPLIT_LAYER_STATE_ENABLE
+#	elif OLED_ENABLE
+#		define SPLIT_OLED_ENABLE
+#		define SPLIT_MODS_ENABLE
+#		define SPLIT_LED_STATE_ENABLE
+#		define SPLIT_LAYER_STATE_ENABLE
+#	elif RGB_MATRIX_ENABLE
+#		define SPLIT_MODS_ENABLE
+#		define SPLIT_LED_STATE_ENABLE
+#		define SPLIT_LAYER_STATE_ENABLE
+#	endif
+#endif
 
 #ifdef MOUSEKEY_ENABLE
 #	define MOUSEKEY_DELAY 0			// Delay between pressing a key and cursor movement
@@ -59,37 +76,16 @@
 #	define MOUSEKEY_WHEEL_TIME_TO_MAX 95
 #endif
 
-// #ifdef RGB_MATRIX_ENABLE
-// #	include "rgb/rgb-disable.h"
-// #	undef RGB_DISABLE_WHEN_USB_SUSPENDED
-// #	define RGB_DISABLE_WHEN_USB_SUSPENDED
-// #	define RGB_MATRIX_TIMEOUT 180000
-// #	define RGB_MATRIX_KEYPRESSES
-// #	ifdef RGB_MATRIX_CUSTOM_USER
-// #		define ENABLE_RGB_MATRIX_CANDY_TAP
-// #		define ENABLE_RGB_MATRIX_CANDY_RAIN
-// #		define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CUSTOM_CANDY_TAP
-// #	else
-// #		define RGB_MATRIX_SOLID_REACTIVE_GRADIENT_MODE
-// #		define ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
-// #		define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
-// #		define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE_SIMPLE
-// #	endif
-// #	ifdef CONVERT_TO_KB2040
-// #		define RGB_DI_PIN 17U
-// #		define RGB_MATRIX_LED_COUNT 2
-// #		define RGB_MATRIX_SPLIT {1, 1}
-// #		define SPLIT_TRANSPORT_MIRROR
-// #	endif
-// #endif
+#ifdef OLED_ENABLE
+#	define OLED_TIMEOUT 10000
+#	define OLED_BRIGHTNESS 180
+#	undef  OLED_FONT_H
+#	define OLED_FONT_H "oled/oledfont.c"
+#endif
 
-// #ifdef OLED_ENABLE
-// #	define OLED_TIMEOUT 10000
-// #	define OLED_BRIGHTNESS 180
-// #	define OLED_FONT_H "oled/oledfont.c"
-// #endif
+#define ENCODER_RESOLUTION 2 
 
-// // Layout macros
-// #ifndef __ASSEMBLER__
-// #	include "layout.h"
-// #endif
+// Layout macros
+#ifndef __ASSEMBLER__
+#	include "layout.h"
+#endif
