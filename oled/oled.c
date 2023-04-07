@@ -7,6 +7,6 @@ oled_rotation_t oled_init_user(oled_rotation_t const rotation) {
 
 bool oled_task_user(void) {
 	extern void render_mod_status(void);
-	is_keyboard_left()? render_mod_status();
+	is_keyboard_left()? render_mod_status() : return false;
 	return false;
 }
