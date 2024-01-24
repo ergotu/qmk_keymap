@@ -4,10 +4,10 @@
     "version": 1,
     "layout": "LAYOUT_elora_w",
     "layers": [
-        ["C_58(HRM(_COLE))"],
-        ["C_58(_GAME)"],
-        ["C_58(_NUMB)"],
-        ["C_58(_SYMB)"],
-        ["C_58(_FUNC)"]
+        ["C_elora(HRM(_COLE))"],
+        ["C_elora(_GAME)"],
+        ["C_elora(_NUMB)"],
+        ["C_elora(_SYMB)"],
+        ["C_elora(_FUNC)"]
     ]
 }
