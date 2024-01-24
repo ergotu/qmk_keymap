@@ -24,9 +24,18 @@ jobs:
       run : git config --global --add safe.directory '*'
 
     - name: Checkout QMK
+      if: ${{ !matrix.repo }}
       uses: actions/checkout@v4.0.0
       with:
         repository: qmk/qmk_firmware
+        ref: ${{ matrix.branch }}
+        submodules: true
+
+    - name: Checkout QMK
+      if: ${{ matrix.repo }}
+      uses: actions/checkout@v4.0.0
+      with:
+        repository: ${{ matrix.repo }}
         ref: ${{ matrix.branch }}
         submodules: true
 
@@ -48,6 +57,7 @@ jobs:
         conv_suffix: $([ ${{ matrix.conv }} ] && printf "_${{ matrix.conv }}")
         split_suffix: $([ ${{ matrix.split }} ] && printf "_${{ matrix.split }}")
         pet_suffix: $([ ${{ matrix.pet }} ] && printf "_${{ matrix.pet }}")
+        repo_suffix: $([ ${{ matrix.repo }} ] && printf "_${{ matrix.repo }}")        
         branch_suffix: $([ ${{ matrix.branch }} ] && printf "_${{ matrix.branch }}")        
       run: |
         echo "file_suffix=${{ env.conv_suffix }}${{ env.split_suffix }}${{ env.pet_suffix }}" >> $GITHUB_ENV
