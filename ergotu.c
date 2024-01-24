@@ -82,7 +82,7 @@ bool process_record_user(uint16_t const keycode, keyrecord_t *record) {
 	return true;
 }
 
-#ifdef(ENCODER_MAP_ENABLE)
+#ifdef ENCODER_MAP_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
   return false;
 }
