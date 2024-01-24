@@ -18,6 +18,11 @@ jobs:
         - keyboard: crkbd
           conv: elite_pi
           split: ''
+        - keyboard: lily58
+          conv: elite_pi
+          split: ''
+          repo: splitkb/qmk_firmware
+          branch: elora
 
     steps:
     - name: Configure safe directory
