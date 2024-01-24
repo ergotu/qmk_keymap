@@ -56,7 +56,7 @@ jobs:
       working-directory: users/${{ github.actor }}/keymaps/
       run: >
         qmk compile -j $(nproc) ${{ matrix.keyboard }}.json
-        -e SPLIT=${{ matrix.split }} -e TARGET=${{ matrix.keyboard }}${split:+_$split}
+        -e CONVERT_TO=${{ matrix.conv }} -e SPLIT=${{ matrix.split }} -e TARGET=${{ matrix.keyboard }}${split:+_$split}
 
     - name: Archive firmware
       uses: actions/upload-artifact@main
