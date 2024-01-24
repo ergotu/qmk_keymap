@@ -31,7 +31,14 @@
 #	define COMBO_ONLY_FROM_LAYER 0
 #endif
 
-#ifdef VIAL_ENABLE
+
+// Myriad boilerplate
+#define MYRIAD_ENABLE
+
+// Vial-specific settings
+// Default is 2, needed because keymap has 7 layers
+
+#ifdef VIAL_ENABLED
 #   define DYNAMIC_KEYMAP_LAYER_COUNT 6
 #   define VIAL_KEYBOARD_UID {0xB3, 0x8D, 0x94, 0xDA, 0xB3, 0xD7, 0xDC, 0x3D}
 #   define VIAL_UNLOCK_COMBO_ROWS { 3, 9 }
