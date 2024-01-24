@@ -86,6 +86,7 @@ jobs:
           *.uf2
 
   publish:
+    needs: build
     name: Publish artifact
     runs-on: ubuntu-latest
     permissions:
