@@ -85,28 +85,9 @@ jobs:
           *.bin
           *.uf2
 
-  publish:
+  release:
     needs: build
-    name: Publish artifact
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-#    - name: Delete previous release
-#      uses: dev-drprasad/delete-tag-and-release@master
-#      with:
-#        tag_name: latest
-#        github_token: ${{ github.token }}
-
-    - name: Download artifact
-      uses: actions/download-artifact@main
-
-    - name: Publish latest release
-      uses: softprops/action-gh-release@master
-      with:
-        name: Firmware
-        tag_name: latest
-        draft: false
-        prerelease: false
-        files: "**/*.*"
+    uses: "utils/publish-artifact.yaml"
+    with:
+      release_name: Firmware
+      release_tag: latest
