@@ -86,5 +86,5 @@ jobs:
     uses: ./.github/workflows/purge-workflow.yaml
     with:
       purge-age: 5
-      delete-all-completed: true
-      delete-all-incomplete: true
+      delete-all-completed: false
+      delete-all-incomplete: false
