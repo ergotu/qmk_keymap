@@ -13,8 +13,6 @@ jobs:
         conv: [elite_pi]
         split: ['']
         pet: ['', LUNA, FELIX]
-        repo: [qmk/qmk_firmware]
-        branch: ['']
         include:
         - keyboard: crkbd
           conv: elite_pi
@@ -25,6 +23,15 @@ jobs:
       run : git config --global --add safe.directory '*'
 
     - name: Checkout QMK
+      if: ${{ matrix.conv == '' }}
+      uses: actions/checkout@v4.0.0
+      with:
+        repository: qmk/qmk_firmware
+        ref: ${{ matrix.branch }}
+        submodules: true
+
+    - name: Checkout QMK
+      if: ${{ matrix.conv != '' }}
       uses: actions/checkout@v4.0.0
       with:
         repository: ${{ matrix.repo }}
