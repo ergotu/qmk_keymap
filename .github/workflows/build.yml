@@ -66,7 +66,7 @@ jobs:
         repo_suffix: $([ ${{ matrix.repo }} ] && printf "_${{ matrix.repo }}")        
         branch_suffix: $([ ${{ matrix.branch }} ] && printf "_${{ matrix.branch }}")        
       run: |
-        echo "file_suffix=${{ env.conv_suffix }}${{ env.split_suffix }}${{ env.pet_suffix }}${{ env.branch_suffix }}" >> $GITHUB_ENV
+        echo "file_suffix=${{ env.split_suffix }}${{ env.pet_suffix }}${{ env.branch_suffix }}" >> $GITHUB_ENV
         echo "archive_name=${{ matrix.keyboard }}${{ env.conv_suffix }}" >> $GITHUB_ENV
 
     - name: Rename uf2
