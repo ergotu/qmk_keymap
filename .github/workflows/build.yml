@@ -91,3 +91,10 @@ jobs:
     with:
       release_name: Firmware
       release_tag: latest
+
+  purge:
+    uses: "utils/purge-workflow.yaml"
+    with:
+      purge-age: 5
+      delete-all-completed: false
+      delete-all-incomplete: false

@@ -1,0 +1,147 @@
+name: Purge workflow jobs
+
+on:
+  workflow_call:
+    inputs:
+      purge-age:
+        description: 'Delete age in days'
+        required: false
+        type: string
+        default: 5
+      delete-all-incomplete:
+        description: 'Delete all incomplete runs'
+        required: false
+        type: boolean
+        default: false
+      delete-all-completed:
+        description: 'Delete all completed runs'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  purge:
+    name: Delete workflow
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: Validate purge age
+      run: |
+        if [ ${{ inputs.purge-age }} -gt 0 ]
+        then
+          echo "days=${{ inputs.purge-age }}" >> $GITHUB_ENV
+        else
+          echo "days=0" >> $GITHUB_ENV
+        fi
+
+    - name: Delete ${{ env.days }} days old jobs
+      if: env.days > 0
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          const number_of_days = ${{ env.days }};
+          const milliseconds_per_day = 86400000;
+          let jobs_to_delete = [];
+
+          // Retrieve list of all workflows
+          const workflow_list = await github.rest.actions.listWorkflowRunsForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            per_page: 100,
+          });
+
+          // Store matching age workflow run id and name
+          for (const run of workflow_list.data.workflow_runs) {
+            if (Date.now() - Date.parse(run.created_at) > milliseconds_per_day * number_of_days) {
+              jobs_to_delete.push([run.id, run.name]);
+            }
+          }
+
+          // Delete run list
+          for (const job of jobs_to_delete) {
+            console.log(`Deleting run id ${job[0]} of '${job[1]}' that is older than ${number_of_days} days.`);
+            try {
+              await github.rest.actions.deleteWorkflowRun({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: job[0]
+              });
+            } catch (error) {
+              // ignore errors
+            }
+          }
+
+    - name: Delete all incomplete jobs
+      if: inputs.delete-all-incomplete
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          // Retrieve list of cancelled workflows
+          const cancelled = await github.rest.actions.listWorkflowRunsForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            per_page: 100,
+            status: 'cancelled',
+          });
+
+          // Retrieve list of skipped workflows
+          const skipped = await github.rest.actions.listWorkflowRunsForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            per_page: 100,
+            status: 'skipped',
+          });
+
+          // Retrieve list of failed workflows
+          const failure = await github.rest.actions.listWorkflowRunsForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            per_page: 100,
+            status: 'failure',
+          });
+
+          // Iterate and delete incomplete run ids
+          for (const incomplete of [cancelled, skipped, failure]) {
+            for (const job of incomplete.data.workflow_runs) {
+              console.log(`Deleting incomplete run id ${job.id} of '${job.name}'`);
+              try {
+                await github.rest.actions.deleteWorkflowRun({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  run_id: job.id
+                });
+              } catch (error) {
+                // ignore errors
+              }
+            }
+          }
+
+    - name: Delete all completed jobs
+      if: inputs.delete-all-completed
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          // Retrieve list of completed workflows
+          const completed = await github.rest.actions.listWorkflowRunsForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            per_page: 100,
+            status: 'completed',
+          });
+
+          // Iterate and delete completed run ids
+          for (const job of completed.data.workflow_runs) {
+            console.log(`Deleting completed run id ${job.id} of '${job.name}'`);
+            try {
+              await github.rest.actions.deleteWorkflowRun({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: job.id
+              });
+            } catch (error) {
+              // ignore errors
+            }
+          }
