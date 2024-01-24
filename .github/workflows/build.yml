@@ -18,8 +18,7 @@ jobs:
         - keyboard: crkbd
           conv: elite_pi
           split: ''
-        - keyboard: lily58
-          conv: elite_pi
+        - keyboard: elora
           split: ''
           repo: splitkb/qmk_firmware
           branch: elora
