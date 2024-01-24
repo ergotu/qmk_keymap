@@ -87,13 +87,13 @@ jobs:
 
   release:
     needs: build
-    uses: "./utils/publish-artifact.yaml"
+    uses: ergotu/.github/utils/publish-artifact.yaml@main
     with:
       release_name: Firmware
       release_tag: latest
 
   purge:
-    uses: "./utils/purge-workflow.yaml"
+    uses: ergotu/.github/utils/purge-workflow.yaml@main
     with:
       purge-age: 5
       delete-all-completed: false
