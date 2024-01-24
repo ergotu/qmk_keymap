@@ -33,12 +33,12 @@ endif
 ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/elora/rev1))
 	SWAP_HANDS_ENABLE = no
 
-	VIA_ENABLE = yes
-	VIAL_ENABLE = yes
+	VIA_ENABLE = no
+	VIAL_ENABLE = no
 	ENCODER_MAP_ENABLE = no
 endif
 
-# Split boards
+# Split boards	
 ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/aurora/lily58/rev1 splitkb/aurora/corne/rev1))
 	# OPT_DEFS += -DAUTOCORRECT
 	# SRC += autocorrect.c
