@@ -183,5 +183,5 @@ KC_ESC  , KC_1 ,  KC_2   ,  KC_3  ,   KC_4 ,   KC_5 ,         KC_LSFT,     KC_RS
 KC_TAB  , l01  ,  l02    ,  l03   ,   l04  ,   l05  ,         KC_LCTL,     KC_RCTL,          r01  ,  r02  ,  r03  ,   r04  ,  r05  , KC_BSPC, \
 CTL_ESC , l06  ,  l07    ,  l08   ,   l09  ,   l10  ,         KC_LALT,     KC_RALT,          r06  ,  r07  ,  r08  ,   r09  ,  r10  ,CTL_QUOT, \
 KC_LSFT , l11  ,  l12    ,  l13   ,   l14  ,   l15  , KC_LBRC,KC_LPRN,     KC_RPRN, KC_RBRC, r11  ,  r12  ,  r13  ,   r14  ,  r15  , KC_RSFT, \
-							ADJUST, ALT_ENT, - l16  , l17    , NAV   ,     SYM    , r16    , r17  , KC_RGUI, FKEYS,
+							ADJUST, ALT_ENT, - l16  , l17    , NAV   ,     SYM    , r16    , r17  , KC_RGUI, FKEYS, \
 KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP,    KC_MUTE,                            KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP,    KC_MUTE
