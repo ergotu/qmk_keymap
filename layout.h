@@ -25,6 +25,12 @@
 #define SA_UP S(A(KC_UP))
 #define SA_DN S(A(KC_DOWN))
 
+// Some random shit
+#define CTL_ESC  MT(MOD_LCTL, KC_ESC)
+#define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
+#define CTL_MINS MT(MOD_RCTL, KC_MINUS)
+#define ALT_ENT  MT(MOD_LALT, KC_ENT)
+
 // Layers 
 enum custom_layers { BSE, TGL, NUM, SYM, FNC };
 
