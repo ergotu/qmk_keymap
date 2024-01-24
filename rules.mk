@@ -32,6 +32,10 @@ endif
 
 ifeq ($(strip $(KEYBOARD)), $(filter $(KEYBOARD), splitkb/elora/rev1))
 	SWAP_HANDS_ENABLE = no
+
+	VIA_ENABLE = yes
+	VIAL_ENABLE = yes
+	ENCODER_MAP_ENABLE = yes
 endif
 
 # Split boards
