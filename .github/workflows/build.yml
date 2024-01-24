@@ -87,13 +87,13 @@ jobs:
 
   release:
     needs: build
-    uses: "utils/publish-artifact.yaml"
+    uses: "./utils/publish-artifact.yaml"
     with:
       release_name: Firmware
       release_tag: latest
 
   purge:
-    uses: "utils/purge-workflow.yaml"
+    uses: "./utils/purge-workflow.yaml"
     with:
       purge-age: 5
       delete-all-completed: false
