@@ -50,35 +50,19 @@ jobs:
         path: users/${{ github.actor }}
         persist-credentials: false
 
-    - name: Build
-      continue-on-error: false
-      working-directory: users/${{ github.actor }}/keymaps
+    - name: Compile
       env:
-        build_args: -e CONVERT_TO=${{ matrix.conv }} -e SPLIT=${{ matrix.split }} -e OLED=${{ matrix.pet }}
-      run: qmk -v compile -j 3 ${{ env.build_args }} ${{ matrix.keyboard }}.json
-
-    - name: Setup variables
-      env:
-        conv_suffix: $([ ${{ matrix.conv }} ] && printf "_${{ matrix.conv }}")
-        split_suffix: $([ ${{ matrix.split }} ] && printf "_${{ matrix.split }}")
-        pet_suffix: $([ ${{ matrix.pet }} ] && printf "_${{ matrix.pet }}")
-        repo_suffix: $([ ${{ matrix.repo }} ] && printf "_${{ matrix.repo }}")        
-        branch_suffix: $([ ${{ matrix.branch }} ] && printf "_${{ matrix.branch }}")        
-      run: |
-        echo "file_suffix=${{ env.conv_suffix }}${{ env.split_suffix }}${{ env.pet_suffix }}${{ env.branch_suffix }}" >> $GITHUB_ENV
-        echo "archive_name=${{ matrix.keyboard }}${{ env.conv_suffix }}" >> $GITHUB_ENV
-
-    - name: Rename uf2
-      if: ${{ matrix.conv != '' }}
-      continue-on-error: true
-      run: for file in *.uf2; do mv -v $file ${file%.*}${{ env.file_suffix }}.uf2; done
+        split: ${{ matrix.split }}
+      working-directory: users/${{ github.actor }}/keymaps/
+      run: >
+        qmk compile -j $(nproc) ${{ matrix.keyboard }}.json
+        -e SPLIT=${{ matrix.split }} -e TARGET=${{ matrix.keyboard }}${split:+_$split}
 
     - name: Archive firmware
-      uses: actions/upload-artifact@v3
-      continue-on-error: true
+      uses: actions/upload-artifact@main
       with:
-        retention-days: 60
-        name: ${{ env.archive_name }}
+        retention-days: 3
+        name: ${{ matrix.keyboard }}_${{ matrix.split }}
         path: |
           *.hex
           *.bin
