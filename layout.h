@@ -127,9 +127,7 @@ HRML(l06, l07, l08, l09), l10,   r06, HRMR(r07, r08, r09, r10), \
 #define LAYOUT_34key_w(...) LAYOUT_split_3x5_2(__VA_ARGS__)
 #define LAYOUT_crkbd_w(...) LAYOUT_split_3x6_3(__VA_ARGS__)
 #define LAYOUT_58key_w(...) LAYOUT(__VA_ARGS__)
-#define LAYOUT_elora_w(...) LAYOUT_myr(__VA_ARGS__)
 #define LAYOUT_ortho_w(...) LAYOUT_ortho_4x12(__VA_ARGS__)
-
 
 // Convert 3x5_2 to 42-key
 #define C_42(k) CONV_42(k)
@@ -170,18 +168,3 @@ KC_TAB , l01    , l02    , l03    , l04    , l05    ,                   r01    ,
 KC_LCTL, l06    , l07    , l08    , l09    , l10    ,                   r06    , r07    , r08    , r09    , r10    , KC_QUOT, \
 KC_LSFT, l11    , l12    , l13    , l14    , l15    , KC_LBRC, KC_RBRC, r11    , r12    , r13    , r14    , r15    , KC_RSFT, \
                            KC_LALT, KC_LGUI, l16    , l17    , r16    , r17    , KC_BSPC, KC_RGUI
-
-
-#define C_elora(k) CONV_elora(k)
-#define CONV_elora( \
-	     l01, l02, l03, l04, l05,   r01, r02, r03, r04, r05, \
-	     l06, l07, l08, l09, l10,   r06, r07, r08, r09, r10, \
-	     l11, l12, l13, l14, l15,   r11, r12, r13, r14, r15, \
-	                    l16, l17,   r16, r17                 \
-) \
-KC_ESC  , KC_1 ,  KC_2   ,  KC_3  ,   KC_4 ,   KC_5 ,         KC_LSFT,     KC_RSFT,          KC_6 ,  KC_7 ,  KC_8 ,   KC_9 ,  KC_0 , KC_ESC , \
-KC_TAB  , l01  ,  l02    ,  l03   ,   l04  ,   l05  ,         KC_LCTL,     KC_RCTL,          r01  ,  r02  ,  r03  ,   r04  ,  r05  , KC_BSPC, \
-CTL_ESC , l06  ,  l07    ,  l08   ,   l09  ,   l10  ,         KC_LALT,     KC_RALT,          r06  ,  r07  ,  r08  ,   r09  ,  r10  ,CTL_QUOT, \
-KC_LSFT , l11  ,  l12    ,  l13   ,   l14  ,   l15  , KC_LBRC,KC_LPRN,     KC_RPRN, KC_RBRC, r11  ,  r12  ,  r13  ,   r14  ,  r15  , KC_RSFT, \
-							ADJUST, ALT_ENT, - l16  , l17    , NAV   ,     SYM    , r16    , r17  , KC_RGUI, FKEYS,
-KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP,    KC_MUTE,                            KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP,    KC_MUTE
