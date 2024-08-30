@@ -1,84 +1,52 @@
 name: Userspace Build
-on: [push, workflow_dispatch]
+on:
+  push:
+    paths-ignore:
+      - "**.md"
+      - "**.py"
+  workflow_dispatch:
 
 jobs:
   build:
-    name: Userspace build
+    name: build
     runs-on: ubuntu-latest
     container: qmkfm/qmk_cli
     strategy:
       fail-fast: false
       matrix:
-        keyboard: [lily58]
-        conv: [elite_pi]
-        split: ['']
-        pet: ['', LUNA, FELIX]
-        branch: ['']
-        include:
-        - keyboard: crkbd
-          conv: elite_pi
-          split: ''
+        keyboard: [crkbd, lily58]
+        split: [""]
 
     steps:
-    - name: Configure safe directory
-      run : git config --global --add safe.directory '*'
+      - name: Checkout QMK
+        uses: actions/checkout@main
+        with:
+          repository: qmk/qmk_firmware
+          ref: develop
+          submodules: true
 
-    - name: Checkout QMK
-      if: ${{ !matrix.repo }}
-      uses: actions/checkout@v4.1.7
-      with:
-        repository: qmk/qmk_firmware
-        ref: ${{ matrix.branch }}
-        submodules: true
+      - name: Checkout userspace
+        uses: actions/checkout@main
+        with:
+          path: users/${{ github.actor }}
+          persist-credentials: false
 
-    - name: Checkout QMK
-      if: ${{ matrix.repo }}
-      uses: actions/checkout@v4.1.7
-      with:
-        repository: ${{ matrix.repo }}
-        ref: ${{ matrix.branch }}
-        submodules: true
+      - name: Setup safe directory
+        run: git config --global --add safe.directory '*'
 
-    - name: Checkout userspace
-      uses: actions/checkout@v4.1.7
-      with:
-        path: users/${{ github.actor }}
-        persist-credentials: false
+      - name: Compile
+        working-directory: users/${{ github.actor }}/keymaps/
+        run: qmk compile -j $(nproc) ${{ matrix.keyboard }}.json -e SPLIT=${{ matrix.split }}
 
-    - name: Compile
-      env:
-        split: ${{ matrix.split }}
-      working-directory: users/${{ github.actor }}/keymaps/
-      run: >
-        qmk compile -j $(nproc) ${{ matrix.keyboard }}.json
-        -e CONVERT_TO=${{ matrix.conv }} -e OLED=${{ matrix.pet }} -e SPLIT=${{ matrix.split }} -e TARGET=${{ matrix.keyboard }}${split:+_$split}
-
-    - name: Setup variables
-      env:
-        conv_suffix: $([ ${{ matrix.conv }} ] && printf "_${{ matrix.conv }}")
-        split_suffix: $([ ${{ matrix.split }} ] && printf "_${{ matrix.split }}")
-        pet_suffix: $([ ${{ matrix.pet }} ] && printf "_${{ matrix.pet }}")
-        repo_suffix: $([ ${{ matrix.repo }} ] && printf "_${{ matrix.repo }}")        
-        branch_suffix: $([ ${{ matrix.branch }} ] && printf "_${{ matrix.branch }}")        
-      run: |
-        echo "file_suffix=${{ env.split_suffix }}${{ env.pet_suffix }}${{ env.branch_suffix }}" >> $GITHUB_ENV
-        echo "archive_name=${{ matrix.keyboard }}${{ env.split_suffix }}${{ env.pet_suffix }}${{ env.branch_suffix }}" >> $GITHUB_ENV
-
-    - name: Rename uf2
-      if: ${{ matrix.conv != '' }}
-      continue-on-error: true
-      run: for file in *.uf2; do mv -v $file ${file%.*}${{ env.file_suffix }}.uf2; done
-
-    - name: Archive firmware
-      uses: actions/upload-artifact@v4
-      continue-on-error: true
-      with:
-        retention-days: 60
-        name: ${{ env.archive_name }}
-        path: |
-          *.hex
-          *.bin
-          *.uf2
+      - name: Archive firmware
+        uses: actions/upload-artifact@main
+        with:
+          retention-days: 1
+          name: ${{ matrix.keyboard }}_${{ matrix.split }}
+          path: |
+            *.hex
+            *.bin
+            *.uf2
 
   release:
     needs: build
@@ -93,3 +61,4 @@ jobs:
       purge-age: 5
       delete-all-completed: false
       delete-all-incomplete: false
+

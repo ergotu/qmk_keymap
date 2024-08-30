@@ -1,13 +1,41 @@
 {
     "keyboard": "splitkb/aurora/lily58/rev1",
+    "converter": "kb2040",
+    "config": {
+        "features": {
+            "oled": true,
+            "rgblight": false,
+            "rgb_matrix": false
+        },
+        "split": {
+            "transport": {
+                "sync": {
+                    "indicators": true,
+                    "layer_state": true,
+                    "modifiers": true,
+                    "oled": true
+                }
+            }
+        }
+    },
     "keymap": "ergotu",
     "version": 1,
     "layout": "LAYOUT_58key_w",
     "layers": [
-        ["C_58(HRM(_COLE))"],
-        ["C_58(_GAME)"],
-        ["C_58(_NUMB)"],
-        ["C_58(_SYMB)"],
-        ["C_58(_FUNC)"]
+        [
+            "C_58(HRM(_COLE))"
+        ],
+        [
+            "C_58(_GAME)"
+        ],
+        [
+            "C_58(_NUM)"
+        ],
+        [
+            "C_58(_SYM)"
+        ],
+        [
+            "C_58(_FUN)"
+        ]
     ]
 }
