@@ -4,7 +4,7 @@
 #define USB_SUSPEND_WAKEUP_DELAY 2000
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1500U
 // Space saving options
-#define LAYER_STATE_8BIT
+#define LAYER_STATE_16BIT
 #define NO_ACTION_ONESHOT
 // Tap-hold settings
 #define TAPPING_TERM 230
