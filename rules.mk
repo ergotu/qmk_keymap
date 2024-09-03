@@ -11,6 +11,7 @@ TAP_DANCE_ENABLE = no
 CAPS_WORD_ENABLE = yes
 
 VPATH += $(USER_PATH)/features
+SRC += achordion.c
 INTROSPECTION_KEYMAP_C = ergotu.c
 
 ifneq ($(strip $(CONVERT_TO)),)
