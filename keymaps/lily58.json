@@ -1,6 +1,6 @@
 {
     "keyboard": "splitkb/aurora/lily58/rev1",
-    "converter": "kb2040",
+    "converter": "elite_pi",
     "config": {
         "features": {
             "oled": true,

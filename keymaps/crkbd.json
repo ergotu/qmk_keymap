@@ -1,6 +1,6 @@
 {
     "keyboard": "splitkb/aurora/corne/rev1",
-    "converter": "kb2040",
+    "converter": "elite_pi",
     "config": {
         "features": {
             "oled": true,
