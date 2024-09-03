@@ -36,20 +36,18 @@
 #define HRMR(k1,k2,k3,k4) RSFT_T(k1),RGUI_T(k2),RALT_T(k3),RCTL_T(k4)
 
 // Thumb keys
-#define MSE_TAB LT(_MOUSE,KC_TAB)
-#define NAV_SPC LT(_NAV,KC_SPC)
-#define MED_ESC LT(_MEDIA,KC_ESC)
-#define SYM_ENT LT(_SYM,KC_ENT)
-#define NUM_BSP LT(_NUM,KC_BSPC)
-#define FUN_DEL LT(_FUN,KC_DEL)
+#define MSE_TAB LT(MOUSE,KC_TAB)
+#define NAV_SPC LT(NAV,KC_SPC)
+#define MED_ESC LT(MEDIA,KC_ESC)
+#define SYM_ENT LT(SYM,KC_ENT)
+#define NUM_BSP LT(NUM,KC_BSPC)
+#define FUN_DEL LT(FUN,KC_DEL)
 
 // Button Layer
-#define BTN(k) LT(_BUTTON, k)
+#define BTN(k) LT(BUTTON, k)
 
 // Layers
-enum custom_layers { BSE, TGL, NUM, SYM, FNC };
-
-// enum custom_layers { BASE, NAV, MOUSE, BUTTON, MEDIA, NUM, SYM, FUN, EXTRA, TAP};
+enum custom_layers { BASE, NAV, MOUSE, BUTTON, MEDIA, NUM, SYM, FUN, EXTRA};
 
 #define _COLE \
 /* ╭────────┬────────┬────────┬────────┬────────╮   ╭────────┬────────┬────────┬────────┬────────╮ */\

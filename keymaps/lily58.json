@@ -22,20 +22,14 @@
     "version": 1,
     "layout": "LAYOUT_58key_w",
     "layers": [
-        [
-            "C_58(HRM(_COLE))"
-        ],
-        [
-            "C_58(_GAME)"
-        ],
-        [
-            "C_58(_NUM)"
-        ],
-        [
-            "C_58(_SYM)"
-        ],
-        [
-            "C_58(_FUN)"
-        ]
+        ["C_58(HRM(_COLE))"],
+        ["C_58(_GAME)"],
+        ["C_58(_NAV)"],
+        ["C_58(_MOUSE)"],
+        ["C_58(_BUTTON)"],
+        ["C_58(_MEDIA)"],
+        ["C_58(_NUM)"],
+        ["C_58(_SYM)"],
+        ["C_58(_FUN)"]
     ]
 }

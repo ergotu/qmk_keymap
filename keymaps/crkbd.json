@@ -22,17 +22,14 @@
     "version": 1,
     "layout": "LAYOUT_crkbd_w",
     "layers": [
-        [
-            "C_42(HRM(_COLE))"
-        ],
-        [
-            "C_42(HRM(_GAME))"
-        ],
-        [
-            "C_42(_SYM)"
-        ],
-        [
-            "C_42(_FUN)"
-        ]
+        ["C_42(HRM(_COLE))"],
+        ["C_42(_GAME)"],
+        ["C_42(_NAV)"],
+        ["C_42(_MOUSE)"],
+        ["C_42(_BUTTON)"],
+        ["C_42(_MEDIA)"],
+        ["C_42(_NUM)"],
+        ["C_42(_SYM)"],
+        ["C_42(_FUN)"]
     ]
 }
