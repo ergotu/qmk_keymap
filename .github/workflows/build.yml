@@ -25,7 +25,7 @@ jobs:
 
     - name: Checkout QMK
       if: ${{ !matrix.repo }}
-      uses: actions/checkout@v4.1.7
+      uses: actions/checkout@v4.2.1
       with:
         repository: qmk/qmk_firmware
         ref: ${{ matrix.branch }}
@@ -33,14 +33,14 @@ jobs:
 
     - name: Checkout QMK
       if: ${{ matrix.repo }}
-      uses: actions/checkout@v4.1.7
+      uses: actions/checkout@v4.2.1
       with:
         repository: ${{ matrix.repo }}
         ref: ${{ matrix.branch }}
         submodules: true
 
     - name: Checkout userspace
-      uses: actions/checkout@v4.1.7
+      uses: actions/checkout@v4.2.1
       with:
         path: users/${{ github.actor }}
         persist-credentials: false
